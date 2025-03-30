@@ -33,7 +33,6 @@ body {
   margin: 0px 20px 0px 0px;
   padding: 25px;
   width: 120px;
-  height: 120px;
   border: 2px solid white;
   color: white;
   background-color: transparent;
@@ -48,6 +47,7 @@ body {
 }
 
 .option-icon {
+  -webkit-tap-highlight-color: transparent;
   width: 100%;
   transform: translate(0px, 0px);
   transition: 0.5s transform;
@@ -121,4 +121,20 @@ body {
 
 .container-option:hover ~ .container-icon-option .option-computer {
   transform: translate(0px, 0px) rotate(-90deg);
+}
+
+@media (max-width: 600px) {
+  .button-option {
+   padding: 15px;
+   width: 90px;
+  }
+  .container-icon-option {
+    width: 500px;
+  }
+  .js-container-icon-option {
+    width: 250px;
+  }
+  .container-icon-option img {
+    width: 50px;
+  }
 }
