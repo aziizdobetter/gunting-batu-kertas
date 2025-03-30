@@ -1,0 +1,124 @@
+* {
+  font-family: 'Arial', 'Comic Mono', 'Fira Code';
+  padding: 0;
+  margin: 0;
+}
+
+
+body {
+  background-color: rgb(25, 25, 25);
+  color: white;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.project-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.container-option {
+  margin: 30px 0px;
+}
+
+.button-option {
+  margin: 0px 20px 0px 0px;
+  padding: 25px;
+  width: 120px;
+  height: 120px;
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+  font-size: 17px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s background-color;
+}
+
+.button-option:hover {
+  background-color: rgb(50, 50, 50);
+}
+
+.option-icon {
+  width: 100%;
+  transform: translate(0px, 0px);
+  transition: 0.5s transform;
+}
+
+.button-option:active .option-icon {
+  transform: translate(0px, -20px);
+}
+
+.button-reset {
+  margin: 20px 0px 0px 0px;
+  padding: 10px 30px;
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 100px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.button-reset:hover {
+  background-color: rgb(50, 50, 50);
+}
+
+.info {
+  margin: 0px 0px 7px 0px;
+  font-size: 20px;
+}
+
+.text-result {
+  margin: 0px 0px 20px 0px;
+}
+
+.container-icon-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 700px;
+  margin: 0px 0px 40px 0px;
+  opacity: 0;
+  transition: 0.5s width, opacity;
+}
+
+.js-container-icon-option {
+  width: 350px;
+  opacity: 1;
+}
+
+.container-icon-option p {
+  font-size: 20px;
+}
+
+.container-icon-option img {
+  width: 70px;
+}
+
+.option-player {
+  transform: translate(0px, 0px) scaleX(-1) rotate(0deg); 
+  transition: 0.5s transform;
+}
+
+.option-computer {
+  transform: translate(0px, 0px) rotate(0deg);
+  transition: 0.5s transform;
+}
+
+.container-option:hover ~ .container-icon-option .option-player {
+  transform: translate(0px, 0px) scaleX(-1) rotate(-90deg);
+}
+
+.container-option:hover ~ .container-icon-option .option-computer {
+  transform: translate(0px, 0px) rotate(-90deg);
+}
