@@ -11,7 +11,10 @@
       content="https://jesjava.github.io/gunting-batu-kertas/"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://jesjava.github.io/gunting-batu-kertas/icons/kertas.png" />
+    <meta
+      property="og:image"
+      content="https://jesjava.github.io/gunting-batu-kertas/icons/kertas.png"
+    />
     <meta property="og:image:width" content="250" />
     <meta property="og:image:height" content="250" />
     <link rel="icon" href="icons/kertas.png" />
@@ -19,7 +22,78 @@
     <title>Gunting Batu Kertas</title>
   </head>
   <body>
-    <div class="container">
+    <!-- Room Selection Container -->
+    <div class="container room-container" id="roomContainer">
+      <p class="project-title">Gunting Batu Kertas</p>
+      <button class="button-room" id="joinRoomBtn">Join Room</button>
+      <div
+        class="room-input-container"
+        id="roomInputContainer"
+        style="display: none"
+      >
+        <input
+          type="text"
+          class="player-name-input"
+          id="joinPlayerNameInput"
+          placeholder="Your Name"
+          maxlength="15"
+        />
+        <input
+          type="text"
+          class="room-input"
+          id="roomIdInput"
+          placeholder="Enter Room ID"
+        />
+        <button class="circle-button" id="joinRoomConfirm">
+          Enter
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+      <button class="button-room" id="createRoomBtn">Create Room</button>
+      <div
+        class="create-room-input-container"
+        id="createRoomInputContainer"
+        style="display: none"
+      >
+        <input
+          type="text"
+          class="player-name-input"
+          id="createPlayerNameInput"
+          placeholder="Your Name"
+          maxlength="15"
+        />
+        <button class="circle-button" id="createRoomConfirm">
+          Enter
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Game Container -->
+    <div
+      class="container game-container"
+      id="gameContainer"
+      style="display: none"
+    >
+      <p class="room-id" id="roomIdDisplay"></p>
       <p class="project-title">Gunting Batu Kertas</p>
       <div class="container-option">
         <button class="button-option option-gunting">
@@ -32,15 +106,20 @@
           <img class="option-icon" src="icons/kertas.png" alt="" />
         </button>
       </div>
-      <p class="info text-result">WAITING</p>
+      <p class="info text-result">Choose your option</p>
       <div class="container-icon-option">
         <img class="option-player" src="icons/gunting.png" alt="" />
         <p>VS</p>
         <img class="option-computer" src="icons/gunting.png" alt="" />
       </div>
       <p class="info text-score"></p>
-      <button class="button-reset">Reset</button>
+      <button class="button-leave" id="leaveRoomBtn">Leave Room</button>
     </div>
+
+    <!-- import firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <!-- end of import -->
     <script src="gbk.js"></script>
   </body>
 </html>

@@ -1,10 +1,9 @@
 * {
-  font-family: 'Arial', 'Comic Mono', 'Fira Code';
+  font-family: "Arial", "Comic Mono", "Fira Code";
   padding: 0;
   margin: 0;
   -webkit-tap-highlight-color: transparent;
 }
-
 
 body {
   background-color: rgb(25, 25, 25);
@@ -24,6 +23,88 @@ body {
 .project-title {
   font-size: 30px;
   font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.room-id {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+
+.button-room {
+  margin: 10px 0px;
+  padding: 12px 40px;
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 100px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s background-color;
+}
+
+.button-room:hover {
+  background-color: rgb(50, 50, 50);
+}
+
+.room-input-container {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px;
+  gap: 10px;
+}
+
+.room-input {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #fac036;
+  border-radius: 100px;
+  background-color: transparent;
+  color: white;
+  width: 200px;
+  outline: none;
+}
+
+.room-input::placeholder {
+  color: #ccc;
+}
+
+.circle-button {
+  width: 150px;
+  height: 50px;
+  border: 2px solid #4caf50;
+  font-size: 16px;
+  border-radius: 100px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  transition: 0.5s background-color;
+}
+
+.circle-button:hover {
+  background-color: rgb(50, 50, 50);
+}
+
+.button-leave {
+  margin: 20px 0px 0px 0px;
+  padding: 10px 30px;
+  font-size: 20px;
+  border: 2px solid #ff4444;
+  border-radius: 100px;
+  background-color: transparent;
+  color: #ff4444;
+  cursor: pointer;
+  transition: 0.5s background-color;
+}
+
+.button-leave:hover {
+  background-color: rgba(255, 68, 68, 0.1);
 }
 
 .container-option {
@@ -56,21 +137,6 @@ body {
 
 .button-option:active .option-icon {
   transform: translate(0px, -20px);
-}
-
-.button-reset {
-  margin: 20px 0px 0px 0px;
-  padding: 10px 30px;
-  font-size: 20px;
-  border: 2px solid white;
-  border-radius: 100px;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-}
-
-.button-reset:hover {
-  background-color: rgb(50, 50, 50);
 }
 
 .info {
@@ -107,7 +173,7 @@ body {
 }
 
 .option-player {
-  transform: translate(0px, 0px) scaleX(-1) rotate(0deg); 
+  transform: translate(0px, 0px) scaleX(-1) rotate(0deg);
   transition: 0.5s transform;
 }
 
@@ -124,10 +190,53 @@ body {
   transform: translate(0px, 0px) rotate(-90deg);
 }
 
+.player-name-input {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #fac036;
+  border-radius: 100px;
+  background-color: transparent;
+  color: white;
+  width: 150px;
+  outline: none;
+}
+
+.player-name-input::placeholder {
+  color: #ccc;
+}
+
+.create-room-input-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0px;
+  gap: 10px;
+}
+
+.room-input-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0px;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .player-name-input {
+    width: 120px;
+  }
+  .room-input-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .create-room-input-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
 @media (max-width: 600px) {
   .button-option {
-   padding: 15px;
-   width: 90px;
+    padding: 15px;
+    width: 90px;
   }
   .container-icon-option {
     width: 500px;
@@ -137,5 +246,8 @@ body {
   }
   .container-icon-option img {
     width: 50px;
+  }
+  .room-input {
+    width: 150px;
   }
 }
