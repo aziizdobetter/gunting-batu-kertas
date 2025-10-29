@@ -218,7 +218,7 @@ function setupRoomListener() {
       playerName = roomData.invitedPlayer?.playerName || "Invited Player";
     }
 
-    updateScoreElement();
+    updateScoreElement(roomData); // Pass roomData to update both players' scores
 
     // Update game status text based on game state
     switch (gameState) {
@@ -477,46 +477,15 @@ function compareSelections(roomData) {
 
 function leaveRoom() {
   if (currentRoomId) {
-    if (isRoomMaker) {
-      // Room maker leaves - delete the room
-      database
-        .ref("rooms/" + currentRoomId)
-        .remove()
-        .then(() => {
-          console.log("Room deleted");
-        })
-        .catch((error) => {
-          console.error("Error deleting room:", error);
-        });
-    } else {
-      // Invited player leaves - check if score is zero
-      database
-        .ref("rooms/" + currentRoomId + "/invitedPlayer")
-        .once("value")
-        .then((snapshot) => {
-          const invitedPlayer = snapshot.val();
-          if (
-            invitedPlayer &&
-            (invitedPlayer.score.win > 0 ||
-              invitedPlayer.score.lose > 0 ||
-              invitedPlayer.score.tie > 0)
-          ) {
-            // Non-zero score - delete the room
-            return database.ref("rooms/" + currentRoomId).remove();
-          } else {
-            // Zero score - just remove invited player
-            return database
-              .ref("rooms/" + currentRoomId + "/invitedPlayer")
-              .remove();
-          }
-        })
-        .then(() => {
-          console.log("Left room successfully");
-        })
-        .catch((error) => {
-          console.error("Error leaving room:", error);
-        });
-    }
+    database
+      .ref("rooms/" + currentRoomId)
+      .remove()
+      .then(() => {
+        console.log("Room deleted");
+      })
+      .catch((error) => {
+        console.error("Error deleting room:", error);
+      });
     currentRoomId = null;
   }
 
@@ -535,7 +504,20 @@ function leaveRoom() {
   updateGameStatus("WAITING");
 }
 
-// Game Functions
-function updateScoreElement() {
-  scoreTextElement.innerText = `${playerName} - Win: ${score.win}, Lose: ${score.lose}, Tie: ${score.tie}`;
+// Game Functions - Updated to display both players' scores
+function updateScoreElement(roomData) {
+  if (!roomData) {
+    // If no roomData provided, just show current player's score
+    scoreTextElement.innerText = `${playerName} - Win: ${score.win}, Lose: ${score.lose}, Tie: ${score.tie}`;
+    return;
+  }
+
+  const roomMakerName = roomData.roomMaker?.playerName || "Room Maker";
+  const invitedPlayerName =
+    roomData.invitedPlayer?.playerName || "Invited Player";
+
+  const roomMakerWin = roomData.roomMaker?.score?.win || 0;
+  const invitedPlayerWin = roomData.invitedPlayer?.score?.win || 0;
+
+  scoreTextElement.innerText = `${roomMakerName} - Win: ${roomMakerWin} | ${invitedPlayerName} - Win: ${invitedPlayerWin}`;
 }
